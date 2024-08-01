@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Card from './Card'
 import RestrauntList from '../utils/RestrauntList'
 
@@ -8,6 +8,10 @@ import RestrauntList from '../utils/RestrauntList'
 const Body = ()=>{
     //state variable: it maintains the state of the component
     const [restraunt,setRestraunt] = useState(RestrauntList)
+
+    
+
+
     const res = restraunt.map(Restraunt=> <Card Restraunt = {Restraunt}/>)
 
     function searchTopRatedReastraunt(){
