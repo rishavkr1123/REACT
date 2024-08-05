@@ -1,0 +1,32 @@
+{
+  "name": "lec_4",
+  "version": "1.0.0",
+  "main": "App.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "bulid": "parcel build index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishavkr1123/REACT.git\".git"
+  },
+  "author": "Rishav",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rishavkr1123/REACT.git\"/issues"
+  },
+  "homepage": "https://github.com/rishavkr1123/REACT.git\"#readme",
+  "description": "",
+  "devDependencies": {
+    "parcel": "^2.12.0",
+    "postcss": "^8.4.40",
+    "process": "^0.11.10"
+    
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.25.1"
+  }
+}
