@@ -164,9 +164,7 @@ body{
     border-radius: 5px;
     margin: 20px;
 }
-.menu ul li{
-    /* margin-left: 50px; */
-}
+
 .user-card{
     display: flex;
     align-items: center;
