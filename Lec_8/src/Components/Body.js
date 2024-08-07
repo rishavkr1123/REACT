@@ -5,9 +5,8 @@ import Shimmer from './Shimmer'
 import { Link } from 'react-router-dom'
 import {SearchBynames} from '../utils/helper'
 import useOnlineStatus from '../utils/useOnlinestatus'
-import {PromotedRestaurantcard} from './Card'
-import { useContext } from "react";
-import UserContext from "../utils/UserContext";
+
+
 
 
 
@@ -17,14 +16,7 @@ const Body = ()=>{
     const [restraunt,setRestraunt] = useState(RestrauntList)
     const [filterrestraunt,setFilterRestraunt] = useState(RestrauntList)
     const [searchtext,setSearchtext] = useState("")
-    const Cardwithpromoted = PromotedRestaurantcard(Card)
-    const {user,setuser} = useContext(UserContext)
-    function findCard(Restaurant){
-        // console.log(Restaurant.info.avgRating)
-        const card=  (Restaurant.info.avgRating>=4.5)? (<Cardwithpromoted Restraunt = {Restaurant}/>) :( <Card Restraunt = {Restaurant}/>)
-        return card
-        
-    }
+
     useEffect(()=>{// It will get called after the component has been rendered
         fetchData()
 
@@ -37,7 +29,6 @@ const Body = ()=>{
         // console.log(jsonData.data.cards[1].card.card.gridElements.infoWithStyle?.restaurants)
         setRestraunt(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
         setFilterRestraunt(jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-        console.log(jsonData?.data.cards[2])
     }
      const onLineStatus = useOnlineStatus()
      if(onLineStatus===false){
@@ -46,7 +37,7 @@ const Body = ()=>{
         )
      }
     
-    const res = filterrestraunt?.map(Restraunt=> <Link to = {"/restaurant/" + Restraunt.info.id}>{findCard(Restraunt)}</Link>)
+    const res = filterrestraunt?.map(Restraunt=> <Link to = {"/restaurant/" + Restraunt.info.id}><Card Restraunt = {Restraunt}/></Link>)
 
     function searchTopRatedReastraunt(){
         const newres= restraunt.filter((obj,i)=>obj.info.avgRating>=4.5)
@@ -66,14 +57,6 @@ const Body = ()=>{
                 <input type="text" placeholder="Search Restraunt...." value={searchtext} onChange={handleSearchChange}/>
                 <button className="searchbtn" onClick={Searchbytext}>Search</button>
                 <button className="toprated-btn" onClick={searchTopRatedReastraunt}>Top-rated</button>
-                <input type="text" placeholder="Enter user" value={user.name} onChange={
-                    (e)=>{
-                        setuser({
-                            name: e.target.value,
-                            email: "random@gmail.com"
-                        })
-                    }
-                }/>
             </div>
             <div className="res-container">
                 {res}

@@ -1,11 +1,10 @@
-import React, {useState, useContext} from 'react';
+import React, {useState} from 'react';
 import { useState } from 'react'
 import {LOGO_URL} from '../utils/constants' //to import named exports
 import { Link } from 'react-router-dom';
-import UserContext from '../utils/UserContext'
 const Header = ()=>{
     const [logval,setLogval] = useState("Logout")
-    const {user} = useContext(UserContext)
+
     function handleLog(){
       setLogval(logval==="Login"?"Logout":"Login")
       
@@ -22,7 +21,6 @@ const Header = ()=>{
         <li><Link to="/contact">Contact Us</Link></li>
         <li><Link to="/grocery">Grocery</Link></li>
         <li><Link to="/">Cart</Link></li>
-        <li>{user.name}</li>
         <button className="log" onClick={handleLog}>{logval}</button>
       </ul>
         

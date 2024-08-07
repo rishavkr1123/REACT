@@ -1,7 +1,5 @@
 
 import { CDN_URL } from "../utils/constants";
-import { useContext } from "react";
-import UserContext from "../utils/UserContext";
 
 const res={
     "info": {
@@ -33,7 +31,6 @@ const res={
     let restraunt= props.Restraunt.info;
     let {name,cloudinaryImageId,cuisines}= restraunt
     const imglink= CDN_URL + `${cloudinaryImageId}`
-    const {user } =useContext(UserContext)
     console.log()
     return(
         <div className="card-container">
@@ -42,8 +39,10 @@ const res={
                 <h3>{name}</h3>
                 <p>{cuisines.toString()}</p>
                 <div className="detail">
-                   <span>{user.name}</span> <br></br>
-                   <span>{user.email}</span> 
+                    <div>
+                    
+
+                    </div>
                 </div>
                 
             </div>
@@ -52,23 +51,4 @@ const res={
 
     )
 }
-/// /Higher order Component
-// input - Restaurantcard => RestaurantCard Promoted
-
-export const PromotedRestaurantcard = (Card)=>{
-    return (props)=>{
-        return(
-            <div className="modifiedCard">
-                <div className="promoted-label">
-                <label >High Rated</label>
-                </div>
-                
-                <Card {...props}/>
-
-            </div>
-        )
-
-    }
-}
-
 export default Card;

@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useContext, useState } from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom"
 import Header from './Components/Header'
 import Body from './Components/Body'
@@ -10,7 +10,7 @@ import Error from './Components/Error'
 import RestaurantMenu from "./Components/RestaurantMenu";
 import {createBrowserRouter, RouterProvider,Outlet} from 'react-router-dom'
 import useOnlineStatus from './utils/useOnlinestatus'
-import UserContext from './utils/UserContext'
+
 
 //Lazy Loading
 const Grocery= lazy(()=>{
@@ -19,11 +19,6 @@ const Grocery= lazy(()=>{
 
 
 const  AppLayout = () => {
-    const [user, setUser] = useState({
-        name: "rahul",
-        email: "rahul@gmail.com"
-
-    })
     const onLineStatus = useOnlineStatus()
      if(onLineStatus===false){
         return (
@@ -32,17 +27,9 @@ const  AppLayout = () => {
      }
     return(
         <div className="app">
-            <UserContext.Provider
-                value={{
-                    user:user,
-                    setuser: setUser
-                }}
-            >
-                <Header/>
-                <Outlet/>
-                <Footer/>
-            </UserContext.Provider>
-            
+            <Header/>
+            <Outlet/>
+            <Footer/>
         </div>
     )
 
